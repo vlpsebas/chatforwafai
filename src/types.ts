@@ -11,13 +11,18 @@ export interface Env {
 	/**
 	 * Binding for static assets.
 	 */
-	ASSETS: { fetch: (request: Request) => Promise<Response> };
+    ASSETS: Fetcher;
+    DB: D1Database;           // D1 for DLP audit logs
+    ACCOUNT_ID: string;       // wrangler secret
+    GATEWAY_ID: string;       // wrangler secret
+    CF_API_TOKEN: string;     // wrangler secret
 }
 
 /**
  * Represents a chat message.
  */
 export interface ChatMessage {
-	role: "system" | "user" | "assistant";
-	content: string;
+    role: "system" | "user" | "assistant";
+    content: string;
 }
+
